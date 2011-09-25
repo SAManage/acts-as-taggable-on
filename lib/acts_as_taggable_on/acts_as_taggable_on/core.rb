@@ -163,7 +163,7 @@ module ActsAsTaggableOn::Taggable
       end
 
       def add_custom_context(value)
-        custom_contexts << value.to_s unless custom_contexts.include?(value.to_s) or self.class.tag_types.map(&:to_s).include?(value.to_s)
+        custom_contexts << value.to_s unless custom_contexts.include?(value.to_s) or self.class.base_class.tag_types.map(&:to_s).include?(value.to_s)
       end
 
       def cached_tag_list_on(context)
@@ -225,7 +225,7 @@ module ActsAsTaggableOn::Taggable
       end
 
       def tagging_contexts
-        custom_contexts + self.class.tag_types.map(&:to_s)
+        custom_contexts + self.class.base_class.tag_types.map(&:to_s)
       end
 
       def reload(*args)
