@@ -1,16 +1,14 @@
 module ActsAsTaggableOn
   module TagsHelper
-    # See the README for an example using tag_cloud.
+    # See the wiki for an example using tag_cloud.
     def tag_cloud(tags, classes)
-      tags = tags.all if tags.respond_to?(:all)
-
       return [] if tags.empty?
 
-      max_count = tags.sort_by(&:count).last.count.to_f
+      max_count = tags.sort_by(&:taggings_count).last.taggings_count.to_f
 
       tags.each do |tag|
-        index = ((tag.count / max_count) * (classes.size - 1)).round
-        yield tag, classes[index]
+        index = ((tag.taggings_count / max_count) * (classes.size - 1))
+        yield tag, classes[index.nan? ? 0 : index.round]
       end
     end
   end

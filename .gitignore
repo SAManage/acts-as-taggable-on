@@ -2,6 +2,12 @@
 *.sqlite3
 /pkg/*
 .bundle
-.rvmrc
-Gemfile.lock
-spec/database.yml
+.ruby-version
+spec/internal/config/database.yml
+tmp*.sw?
+*.sw?
+tmp
+*.gem
+*.lock
+*.iml
+/.idea
