@@ -62,8 +62,7 @@ module ActsAsTaggableOn
 
   class Configuration
     attr_accessor :force_lowercase, :force_parameterize,
-                  :remove_unused_tags, :default_parser,
-                  :tags_counter, :tags_table,
+                  :remove_unused_tags, :default_parser, :tags_table,
                   :taggings_table
     attr_reader :delimiter, :strict_case_match
 
@@ -73,7 +72,6 @@ module ActsAsTaggableOn
       @force_parameterize = false
       @strict_case_match = false
       @remove_unused_tags = false
-      @tags_counter = true
       @default_parser = DefaultParser
       @force_binary_collation = false
       @tags_table = :tags
